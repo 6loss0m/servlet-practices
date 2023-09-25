@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.poscodx.guestbook.dao.GuestBookDao;
-import com.poscodx.guestbook.vo.GuestBookVo;
+import com.poscodx.guestbook.dao.GuestbookDao;
+import com.poscodx.guestbook.vo.GuestbookVo;
 
 public class GuestbookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,12 +25,12 @@ public class GuestbookController extends HttpServlet {
 			String password = request.getParameter("password");
 			String contents = request.getParameter("message");
 
-			GuestBookVo vo = new GuestBookVo();
+			GuestbookVo vo = new GuestbookVo();
 			vo.setName(name);
 			vo.setPassword(password);
 			vo.setContents(contents);
 
-			new GuestBookDao().insert(vo);
+			new GuestbookDao().insert(vo);
 
 			response.sendRedirect("/guestbook02/gb");
 
@@ -47,15 +47,15 @@ public class GuestbookController extends HttpServlet {
 			Long no = Long.parseLong(request.getParameter("no"));
 			String password = request.getParameter("password");
 
-			new GuestBookDao().deleteByNo(no, password);
+			new GuestbookDao().deleteByNo(no, password);
 
 			response.sendRedirect("/guestbook02/gb");
 		} else {
-			List<GuestBookVo> list = new GuestBookDao().findAll();
+			List<GuestbookVo> list = new GuestbookDao().findAll();
 
 			request.setAttribute("list", list);
 
-			for (GuestBookVo vo : list) {
+			for (GuestbookVo vo : list) {
 				System.out.println(vo);
 			}
 

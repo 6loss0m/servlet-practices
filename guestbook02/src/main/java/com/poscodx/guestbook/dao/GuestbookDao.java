@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.poscodx.guestbook.vo.GuestBookVo;
+import com.poscodx.guestbook.vo.GuestbookVo;
 
 
-public class GuestBookDao {
-	public List<GuestBookVo> findAll() {
-		List<GuestBookVo> result = new ArrayList<>();
+public class GuestbookDao {
+	public List<GuestbookVo> findAll() {
+		List<GuestbookVo> result = new ArrayList<>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -38,7 +38,7 @@ public class GuestBookDao {
 				String contents = rs.getString(3);
 				String regDate = rs.getString(4);
 				
-				GuestBookVo vo = new GuestBookVo();
+				GuestbookVo vo = new GuestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
 				vo.setContents(contents);
@@ -69,7 +69,7 @@ public class GuestBookDao {
 		return result;
 	}
 
-	public void insert(GuestBookVo vo) {
+	public void insert(GuestbookVo vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
